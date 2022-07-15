@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <CheckBox
+        android:id="@+id/assignedMe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Show only jobs Assigned to Me"
+        android:checked="true"/>
+
+    <CheckBox
+        android:id="@+id/job_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:checked="true"
+        android:text="Show Job ID" />
+
+    <CheckBox
+        android:id="@+id/assignedTo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Show assigned to"
+        android:checked="true"/>
+
+    <CheckBox
+        android:id="@+id/setDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Show Date Set"
+        android:checked="true"/>
+
+    <CheckBox
+        android:id="@+id/dueDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Show Date Due"
+        android:checked="true"/>
+
+    <CheckBox
+        android:id="@+id/completeDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Show date Complete"
+        android:checked="true"/>
+
+    <CheckBox
+        android:id="@+id/checkboxComplete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="Show Complete Tasks" />
+
+</LinearLayout>

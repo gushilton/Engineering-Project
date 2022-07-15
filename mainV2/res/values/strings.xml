@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">My Project</string>
+
+    <!-- menu -->
+    <string name="menu_refresh">menu refresh</string>
+    <string name="settings">Settings</string>
+
+    <!-- Settings Layout -->
+    <string name="password">password</string>
+    <string name="server_ip_address">Server IP address</string>
+    <string name="username">username</string>
+
+    <string name="nav_draw_open">Open Navigation Drawer</string>
+    <string name="nav_draw_close">Close Navigation Drawer</string>
+    <!-- -->
+
+</resources>
