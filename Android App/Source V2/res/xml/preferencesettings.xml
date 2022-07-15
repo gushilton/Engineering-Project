@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="Login">
+
+        <EditTextPreference
+            android:defaultValue="false"
+            android:key="Username"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="Username"
+            android:inputType="text"/>
+        <EditTextPreference
+            android:defaultValue="false"
+            android:inputType="textPassword"
+            android:key="Password"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="Password" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Server">
+
+        <EditTextPreference
+            android:defaultValue="false"
+            android:key="Server"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="Server Address"
+            android:inputType="text" />
+    </PreferenceCategory>
+
+
+</PreferenceScreen>
