@@ -1,0 +1,28 @@
+Create Database TimeAndAttendance;
+
+CREATE TABLE TimeAndAttendance.timesheet(
+EntryNumber int(5) zerofill not null AUTO_increment,
+Year int(2) zerofill,
+Month int(2)zerofill,
+CompanyID int,
+TimeIn  DATETIME,
+TimeOut DATETIME,
+CONSTRAINT pk_timesheet PRIMARY KEY(Year,Month,EntryNumber),
+CONSTRAINT fk_companyID FOREIGN KEY (CompanyID) REFERENCES personnel.OnAndHistory(CompanyID)
+)ENGINE = MyISAM;
+
+
+INSERT INTO TimeAndAttendance.timesheet
+(Year,Month,CompanyId,TimeIn,TimeOut)
+VALUES
+(22,04,1,'2022-04-13 08:00:00',null),
+(22,04,3,'2022-04-13 08:00:00',null),
+(22,04,4,'2022-04-13 08:00:00',null),
+(22,04,5,'2022-04-13 08:00:00',null),
+(22,04,1,'2022-04-13 13:00:00','2022-04-13 18:00:00'),
+(22,04,3,'2022-04-13 13:00:00','2022-04-13 18:00:00'),
+(22,04,4,'2022-04-13 13:00:00','2022-04-13 18:00:00'),
+(22,04,5,'2022-04-13 13:00:00','2022-04-13 18:00:00');
+
+
+

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <div>
+            <label labelFor="usernameInpuIDt">Username: </label>
+            <input id="usernameInputID"></input>
+            <br>
+            <label labelFor="passwdInputID">Password: </label>
+            <input id="passwdInputID" type="password"></input>
+        </div>
+        <div>
+            <h1>Add Maintence tasks</h1>
+            <div id="TaskDiv">
+            </div>
+            <Button onclick="routineBTR()">Routine Maintenance</Button>
+            <Button onclick="reactiveBTR()">Reactive Maintenance</Button>
+        </div>
+        <div id="responseDiv">
+        </div>
+        
+        <script>
+             let taskDiv = document.getElementById("TaskDiv");
+             let responseDiv = document.getElementById("responseDiv");
+            
+            function createOptionDepartment(){
+                rmChild(taskDiv);
+                var selectDepartment = document.createElement("select");
+                selectDepartment.onchange = DepartmentSelect;
+                selectDepartment.id = "selectDepartmentID";
+                var optionNill = document.createElement("option");
+                optionNill.innerHTML = "Please Select Department";
+                optionNill.value = "nill";
+                selectDepartment.appendChild(optionNill);
+                var optionDeck = document.createElement("option");
+                optionDeck.innerHTML = "Deck";
+                optionDeck.value = "Deck";
+                selectDepartment.appendChild(optionDeck);
+                var optionEngine = document.createElement("option");
+                optionEngine.innerHTML = "Engine";
+                optionEngine.value = "Engine";
+                selectDepartment.appendChild(optionEngine);
+                var optionElectrical = document.createElement("option");
+                optionElectrical.innerHTML = "Electrical";
+                optionElectrical.value = "Electrical";
+                selectDepartment.appendChild(optionElectrical);
+                taskDiv.appendChild(selectDepartment);
+            }
+            function routineBTR(){
+                responseDiv.innerHTML = document.getElementById("selectDepartmentID").value;
+            }
+            function reactiveBTR(){
+                
+            }
+            function rmChild(div){
+                while (div.hasChildNodes()){
+                    div.removeChild(div.firstChild);
+                }
+            }
+            function createBreak(){
+                var brk = document.createElement("br");
+                return brk;
+            }
+            function DepartmentSelect(){
+                var username = document.getElementById("usernameInputID").value;
+                var passwd = document.getElementById("passwdInputID").value;
+                var depConn = new XMLHttpRequest();
+                depConn.onreadystatechange = function(){
+                    if (depConn.readyState == 4 && depConn.status == 200){
+                        var optionResponse = JSON.parse(this.responseText);
+                        
+                        var selectSpec = document.createElement("select");
+                        selectSpec.onchange = SpecSelect;
+                        selectSpec.id = "selectSpecID";
+                        var optionNill = document.createElement("option");
+                        optionNill.innerHTML = "Please Select specialty";
+                        optionNill.value = "nill";
+                        selectSpec.appendChild(optionNill);
+                        
+                        if (optionResponse.status == "success"){
+                            for (var i =0;i<optionResponse.specialty.length;i++){
+                                var option = document.createElement("option");
+                                option.innerHTML = "";
+                                option.value = "";
+                                selectSpec.appendChild(option);
+                            }
+                        }
+                        
+                        var optionNew = document.createElement("option");
+                        optionNew.innerHTML = "Add new specialty";
+                        optionNew.value = "new";
+                        selectSpec.appendChild(optionNew);
+                        taskDiv.appendChild(selectSpec);
+                        
+                    }else if (depConn.readyState == 4 && depConn.status != 200){
+                        
+                    }
+                }
+                depConn.open("POST","");
+                depConn.send();
+                
+            }
+            function SpecSelect(){
+                
+            }
+            
+            createOptionDepartment()
+        </script>
+    </body>
+</html>

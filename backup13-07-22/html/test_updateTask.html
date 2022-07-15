@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <input type="TEXT" id="user">
+        <br>
+        <input type="TEXT" id="pass">
+        <br>
+	<br>
+	<input type="TEXT" id="year">
+        <input type="TEXT" id="job">
+        <br>
+	<br>
+	<input type="TEXT" id="note">
+        <br>
+	<input type="TEXT" id="date">
+        <br>
+	<br>
+	<input type="TEXT" id="depSh">
+	<input type="TEXT" id="depNu">
+        <br>
+	<br>
+	<input type="TEXT" id="hie">
+	<input type="TEXT" id="hieNum">
+        <br>	
+        <button id="btr" onclick="btrpressed()">Test</button>
+        <p id="res"></p>
+        <script>
+            var order = "ASC"
+            function btrpressed(){
+                var user = document.getElementById("user").value;
+                var pass = document.getElementById("pass").value;
+		var yearID = document.getElementById("year").value;
+                var jobID = document.getElementById("job").value;
+		var note= document.getElementById("note").value;
+		var date = document.getElementById("date").value;
+		var depSh = document.getElementById("depSh").value;
+                var depNu = document.getElementById("depNu").value;
+		var hie= document.getElementById("hie").value;
+		var hieNu = document.getElementById("hieNum").value;
+		var workOrder = "{\"yearID\":"+yearID+",\"JobID\":"+jobID+",\"routineDuty\":\"1\",\"Department_short\":\""+depSh+"\",\"Routine_number\":\""+depNu+"\",\"hierachy\":\""+hie+"\",\"functionID\":\""+hieNu+"\"}";
+		
+
+                var conn = new XMLHttpRequest();
+                conn.onreadystatechange = function(){
+                    if (conn.readystate = 4 && conn.status == 200){
+                        var response = this.responseText;
+                        document.getElementById("res").innerHTML = response;
+                    }
+                }
+                conn.open("POST","/updateTask.php",true);
+                conn.setRequestHeader("Content-type", "application/json");
+                conn.send("{\"username\":\""+user+"\",\"password\":\""+pass+"\",\"Date\":\""+date.substring(0,10)+"\",\"datetime\":\""+date+"\",\"workOrder\":"+workOrder+",\"note\":\""+note+"\"}");
+            }
+            
+        </script>
+    </body>
+</html>
+
+

@@ -1,0 +1,3 @@
+ CREATE TABLE Defects.Department(Name varchar(20));
+
+ INSERT INTO Defects.Department(Name)VALUES("Electrical"),("Plumbing"),("Ventilation");

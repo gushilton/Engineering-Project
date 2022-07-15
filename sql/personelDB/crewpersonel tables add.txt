@@ -1,0 +1,23 @@
+CREATE TABLE personnel.OnBoard(
+CompanyID int, 
+RoleID int,
+roleTxtID varchar(20),
+FirstName varchar(25),
+LastName  varchar(25),
+UserName varchar(30),
+EmbarkedDate DATE,
+DisembarkDate DATE,
+PRIMARY KEY(CompanyID),
+FOREIGN KEY(RoleID) REFERENCES CrewRoles (RoleID)
+); 
+
+CREATE TABLE personnel.OnLeave(
+CompanyID int, 
+RoleID int,
+roleID varchar(20),
+FirstName varchar(25),
+LastName  varchar(25),
+DisembarkDate DATE,
+PRIMARY KEY(CompanyID),
+FOREIGN KEY(RoleID) REFERENCES CrewRoles(RoleID)
+);

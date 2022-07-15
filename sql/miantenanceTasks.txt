@@ -1,0 +1,10 @@
+CREATE TABLE maintenance.maintenanceID(
+Department varchar(),
+DepartmentShort varchar() NOT NULL,
+Equipment varchar(),
+EquipmentShort varchar() NOT NULL,
+TaskNumber int NOT NULL,
+TaskInfo varchar()
+CONSTRAINT PK_maintenanceID PRIMARY KEY(DepartmentShort,EquipmentShort,TaskNumber)
+); 
+

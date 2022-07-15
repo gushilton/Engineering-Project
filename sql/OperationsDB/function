@@ -1,0 +1,85 @@
+CREATE TABLE Operations.functions(
+ heirachy char(3),
+ function int(6) zerofill not null ,
+ functionName varchar(50),
+
+ CONSTRAINT pk_fucntion PRIMARY KEY(heirachy,function)
+);
+
+INSERT INTO Operations.functions
+(heirachy,function,functionName)
+VALUES
+("   ",0,""),
+("AA",1,"Prime Mover 1"),
+("AA",2,"Prime Mover 2"),
+("AA",3,"Prime Mover 3"),
+("AA",4,"Prime Mover 4"),
+("AB",1,"Alternator 1"),
+("AB",2,"Alternator 2"),
+("AB",3,"Alternator 3"),
+("AB",4,"Alternator 4"),
+("CC",1,"GMDSS Equipment"),
+("DA",1,"Lift 1"),
+("DA",2,"Lift 2"),
+("DA",3,"Lift 3"),
+("DA",4,"Lift 4"),
+("DB",1,"Washing Machine 1"),
+("DB",2,"Washing Machine 2"),
+("DB",3,"Drying Machine 1"),
+("DB",4,"Drying Machine 2"),
+("E",1,"Deep fat fryer 1"),
+("E",2,"Deep fat fryer 2"),
+("E",3,"Oven 1"),
+("E",4,"Oven 2"),
+("E",5,"Hot Plates range 1"),
+("E",6,"Hot Plates range 2"),
+("E",7,"Fridge 1"),
+("E",8,"Fridge 2"),
+("E",9,"Freezer"),
+("GBA",1,"Fire Zone 1"),
+("GBA",2,"Fire Zone 2"),
+("GBA",3,"Fire Zone 3");
+
+INSERT INTO Operations.functions
+(heirachy,function,functionName)
+VALUES
+("FAA",1,"Multimeter 1"),
+("FAA",2,"Multimeter 2"),
+("FAA",3,"Multimeter 3"),
+("FAA",4,"Multimeter 4"),
+("FAB",1,"Loop calibrator 1"),
+("FAB",2,"Loop Calibrator 2"),
+("FAB",3,"Temperature cal 1"),
+("FAB",4,"pressure cal 2");
+
+
+INSERT INTO Operations.functions
+(heirachy,function,functionName)
+VALUES
+("GBB",1,"Main Fire Pump"),
+("GBB",2,"Emergency Fire Pump"),
+("GBB",3,"Sprinkler Fire Pump");
+
+
+INSERT INTO Operations.functions
+(heirachy,function,functionName)
+VALUES
+("GAA",1,"Emeregency Engine 1"),
+("GAB",1,"Emergency Alternator 1"),
+("GAC",1,"Transitional Batteries");
+
+
+INSERT INTO Operations.functions
+(heirachy,function,functionName)
+VALUES
+("GBB",4,"Hydrants and Hoses"),
+("GBB",4,"Extinguishers");
+
+
+INSERT INTO Operations.functions
+(heirachy,function,functionName)
+VALUES
+("GD",1,"Lifeboat 1"),
+("GD",2,"Lifeboat 2"),
+("GD",3,"Lifeboat 3"),
+("GD",4,"Lifeboat 4");
