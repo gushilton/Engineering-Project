@@ -1,0 +1,23 @@
+<?php
+      if ($_SERVER['REQUEST_METHOD'] == "POST"){
+         $header = file_get_contents('php://input');
+         $header =  json_decode($header);
+         $username = $header->{'username'};
+         $password = $header->{'password'};
+         $dbCon = mysqli_connect('localhost',$username,$password);
+         $response;
+         if (!$dbCon){
+            $response = array("status"=>"failed","reason"=>mysqli_connect_error($dbCon));
+         }else{
+            $componentQuery = "SELECT * FROM Operations.Components WHERE heirachy = '".$header->{'heirachy'}."' AND function = ".$header->{'function'};
+            $workQuery = "SELECT * FROM Operations.MaintenanceTasks WHERE heirachy = '".$header->{'heirachy'}."' AND function = ".$header->{'function'};
+            $componentResult = mysqli_fetch_assoc(mysqli_query($dbCon,$componentQuery));
+            $workRows = array();
+            while ($row = mysqli_fetch_assoc(mysqli_query($dbCon,$componentQuery))){
+                array_push($workRows,$row);
+            }
+            $response = array("status"=>"success","result"=>array("component"=>$componentResult,"workOrders"=>$workRows));
+         }
+         echo json_encode($response);
+      }
+?>
