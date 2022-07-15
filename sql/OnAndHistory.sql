@@ -1,0 +1,1 @@
+ALTER TABLE Operations.MaintenanceTasks ADD CONSTRAINT fk_completeBy FOREIGN KEY (completeBy) REFERENCES personnel.OnAndHistory(CompanyID);

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <div>
+            <label labelFor="usernameInpuIDt">Username: </label>
+            <input id="usernameInputID"></input>
+            <br>
+            <label labelFor="passwdInputID">Password: </label>
+            <input id="passwdInputID" type="password"></input>
+        </div>
+        <div>
+            <h1>Add Crew</h1>
+            <Button onclick="newCrewBTR()">ADD NEW CREW</Button>
+            <Button onclick="returnCrewBTR()">ADD RETRUNING CREW</Button>
+        </div>
+        <div id="CrewDiv">
+            
+        </div>
+
+        <script>
+            function newCrewBTR(){
+                var CrewDiv = document.getElementById("CrewDiv");
+                while(CrewDiv.firstChild){
+                    CrewDiv.removeChild(CrewDiv.lastChild);
+                }
+                var empIDLabel = document.createElement("Label");
+                empIDLabel.htmlFor = "empIDTxtID";
+                empIDLabel.innerHTML = "Employee ID";
+                var empIDtxt = document.createElement("input");
+                empIDtxt.type = "Text";
+                empIDtxt.id = "empIDTxtID";
+                var roleIDLabel = document.createElement("Label");
+                roleIDLabel.htmlFor = "roleIDTxtID";
+                roleIDLabel.innerHTML = "Employee Role";
+                var roleIDtxt = document.createElement("input");
+                roleIDtxt.type = "Text";
+                roleIDtxt.id = "roleIDTxtID";
+                var userNameLabel = document.createElement("Label");
+                userNameLabel.htmlFor = "userNameTxtID";
+                userNameLabel.innerHTML = "User Name";
+                var userNametxt = document.createElement("input");
+                userNametxt.type = "Text";
+                userNametxt.id = "userNameTxtID";
+                var fNameLabel = document.createElement("Label");
+                fNameLabel.htmlFor = "fNameTxtID";
+                fNameLabel.innerHTML = "First Name";
+                var fNametxt = document.createElement("input");
+                fNametxt.type = "Text";
+                fNametxt.id = "fNameTxtID";
+                var lNameLabel = document.createElement("Label");
+                lNameLabel.htmlFor = "lNameTxtID";
+                lNameLabel.innerHTML = "Last Name";
+                var lNametxt = document.createElement("input");
+                lNametxt.type = "Text";
+                lNametxt.id = "lNameTxtID";
+                var embarkLabel = document.createElement("Label");
+                embarkLabel.htmlFor = "embarkDateID";
+                embarkLabel.innerHTML = "Embarkation Date";
+                var embarkDate = document.createElement("input");
+                embarkDate.type = "Date";
+                embarkDate.id = "embarkDateID";
+                var disembarkLabel = document.createElement("Label");
+                disembarkLabel.htmlFor = "disembarkDateID";
+                disembarkLabel.innerHTML = "Disembarkation Date";
+                var disembarkDate= document.createElement("input");
+                disembarkDate.type = "Date";
+                disembarkDate.id = "disembarkDateID";
+                var addCrew = document.createElement("Button");
+                addCrew.innerHTML = "Add Crew";
+                addCrew.onclick = addCrewBTR;
+                CrewDiv.appendChild(createBreak());
+                CrewDiv.appendChild(empIDLabel);
+                CrewDiv.appendChild(createBreak());
+                CrewDiv.appendChild(empIDtxt);
+                CrewDiv.appendChild(createBreak());
+                CrewDiv.appendChild(roleIDLabel);
+                CrewDiv.appendChild(createBreak());
+                CrewDiv.appendChild(roleIDtxt);
+                CrewDiv.appendChild(createBreak());
+                CrewDiv.appendChild(userNameLabel);
+                CrewDiv.appendChild(createBreak());
+                CrewDiv.appendChild(userNametxt);
+                CrewDiv.appendChild(createBreak());
+                CrewDiv.appendChild(fNameLabel);
+                CrewDiv.appendChild(createBreak());
+                CrewDiv.appendChild(fNametxt);
+                CrewDiv.appendChild(createBreak());
+                CrewDiv.appendChild(lNameLabel);
+                CrewDiv.appendChild(createBreak());
+                CrewDiv.appendChild(lNametxt);
+                CrewDiv.appendChild(createBreak());
+                CrewDiv.appendChild(embarkLabel);
+                CrewDiv.appendChild(createBreak());
+                CrewDiv.appendChild(embarkDate);
+                CrewDiv.appendChild(createBreak());
+                CrewDiv.appendChild(disembarkLabel);
+                CrewDiv.appendChild(createBreak());
+                CrewDiv.appendChild(disembarkDate);
+                CrewDiv.appendChild(createBreak());
+                CrewDiv.appendChild(addCrew);
+                
+            }
+            
+            function addCrewBTR(){
+                var empID = document.getElementById("empIDTxtID").value;
+                var roleID = document.getElementById("roleIDTxtID").value;
+                var userName = document.getElementById("userNameTxtID").value;
+                var fName = document.getElementById("fNameTxtID").value;
+                var lName = document.getElementById("lNameTxtID").value;
+                var embarkDate = document.getElementById("embarkDateID").value;
+                var disembarkDate = document.getElementById("disembarkDateID").value;
+
+                var header = "{\"empID\":\""+empID+"\",\"roleID\":\""+roleID+"\",\"user\":\""+userName+"\",\"fName\":\""+fName+"\",\"lName\":\""+lName+"\",\"embDate\":\""+embarkDate+"\",\"disDate\":\""+disembarkDate+"\"}";
+
+                var con = new XMLHttpRequest();
+                con.onreadystatechange = function(){
+                    if(con.readyState == 4 && con.status == 200){
+                        var response = this.response;
+                        var CrewDiv = document.getElementById("CrewDiv");
+                        while(CrewDiv.firstChild){
+                            CrewDiv.removeChild(CrewDiv.lastChild);
+                        }
+                        var txt= document.createElement('p');
+                        txt.innerHTML= response;
+                        CrewDiv.appendChild(txt);
+                    }
+
+                }
+                con.open("POST","/Crew/newCrew.php",true);
+                con.setRequestHeader("Content-type", "application/json");
+                con.send(header);
+
+            }
+            
+            function returnCrewBTR(){
+                var CrewDiv = document.getElementById("CrewDiv");
+                
+                var username = document.getElementById("usernameInputID").value;
+                var passwd = document.getElementById("passwdInputID").value;
+                
+                var sendHeader = "{\"username\":\"" +username+ "\",\"password\":\"" +passwd+ "\"}"
+                                
+                var crewConn = new XMLHttpRequest();
+                crewConn.onreadystatechange = function(){
+
+                    if (crewConn.readyState == 4 && crewConn.status == 200){
+                        var response = JSON.parse(this.responseText);
+                    
+                        if (response.status == "success"){
+                            var embarkLabel = document.createElement("Label");
+                            embarkLabel.htmlFor = "embarkDateID";
+                            embarkLabel.innerHTML = "Embarkation Date";
+                            var embarkDate = document.createElement("input");
+                            embarkDate.type = "Date";
+                            embarkDate.id = "embarkDateID";
+                            var disembarkLabel = document.createElement("Label");
+                            disembarkLabel.htmlFor = "disembarkDateID";
+                            disembarkLabel.innerHTML = "Disembarkation Date";
+                            var disembarkDate= document.createElement("input");
+                            disembarkDate.type = "Date";
+                            disembarkDate.id = "disembarkDateID";
+                            CrewDiv.appendChild(createBreak());
+                            CrewDiv.appendChild(embarkLabel);
+                            CrewDiv.appendChild(createBreak());
+                            CrewDiv.appendChild(embarkDate);
+                            CrewDiv.appendChild(createBreak());
+                            CrewDiv.appendChild(disembarkLabel);
+                            CrewDiv.appendChild(createBreak());
+                            CrewDiv.appendChild(disembarkDate);
+                        }
+                    }
+                }
+                crewConn.open("POST","/Crew/returningCrew.php",true);
+                crewConn.setRequestHeader("Content-type", "application/json");
+                crewConn.send(sendHeader);
+            }
+            
+            function createBreak(){
+                var brk = document.createElement("br");
+                return brk;
+            }
+        </script>
+    </body>
+</html>

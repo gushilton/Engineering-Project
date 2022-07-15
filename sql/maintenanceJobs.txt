@@ -1,0 +1,14 @@
+CREATE TABLE maintenance.maintenancetasks(
+ Job_ID int AUTO_INCREMENT NOT NULL,
+ Maintenance_ID varchar(10) DEFAULT '',
+ Job_Task varchar(255),
+ Assigned_To varchar(20),
+ Date_Set DATE,
+ Date_Due DATE,
+ Date_Complete DATE,
+ Complete BIT(1) DEFAULT 0,
+PRIMARY KEY(Job_ID)); 
+
+
+
+

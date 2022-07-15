@@ -1,0 +1,37 @@
+CREATE TABLE CrewRoles(
+RoleID int AUTO_INCREMENT,
+Department varchar(15),
+Rank varchar(12),
+PRIMARY KEY(RoleID)); 
+
+
+INSERT INTO CrewRoles
+(Department,Rank)
+VALUES
+("Deck","Captain"),
+("Deck","Chief"),
+("Deck","1st"),
+("Deck","2nd"),
+("Deck","3rd"),
+("Deck","4th"),
+("Deck","Cadet"),
+("Deck","Coxswain"),
+("Engine","Chief"),
+("Engine","Staff Chief"),
+("Engine","1st"),
+("Engine","2nd"),
+("Engine","3rd"),
+("Engine","4th"),
+("Engine","Cadet"),
+("Engine","Mechanic"),
+("Engine","Fitter"),
+("Engine","Motorman"),
+("Electro-Tech","Staff Chief"),
+("Electro-Tech","1ETO"),
+("Electro-Tech","2ETO"),
+("Electro-Tech","3ETO"),
+("Electro-Tech","Technician"),
+("Electro-Tech","Cadet");
+
+
+

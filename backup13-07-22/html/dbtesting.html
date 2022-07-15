@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <input type="TEXT" id="user">
+        <br>
+        <input type="TEXT" id="pass">
+        <br>
+        <button id="btr" onclick="btrpressed()">Test</button>
+        <p id="res"></p>
+        <script>
+            function btrpressed(){
+                var user = document.getElementById("user").value;
+                var pass = document.getElementById("pass").value;
+                var conn = new XMLHttpRequest();
+                conn.onreadystatechange = function(){
+                    if (conn.readystate = 4 && conn.status == 200){
+                        var response = this.responseText;
+                        document.getElementById("res").innerHTML = response;
+                    }
+                }
+                conn.open("POST","DB_test.php",true);
+                conn.setRequestHeader("Content-type", "application/json");
+                conn.send("{\"username\":\""+user+"\",\"password\":\""+pass+"\",\"filters\":{\"AssignedMe\":\"true\",\"complete\":\"false\"}}");
+               }
+            
+        </script>
+    </body>
+</html>
+

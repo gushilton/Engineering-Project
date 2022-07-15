@@ -1,0 +1,18 @@
+INSERT INTO tasks
+(Maintenance_ID, Job_Task, Assigned_To, Date_Set, Date_Due, Location)
+VALUES
+('EL-LT-001','Light Bulb Change','userA','2021-03-08','2021-03-31','CB5001'),
+('EL-LM-005','Motor Maintenance','userA','2021-03-08','2021-03-31','FZ2DK2SBBK3'),
+('EL-LT-001','Light Bulb Change','userB','2021-03-08','2021-04-30','CB5001'),
+('EL-LT-001','Light Bulb Change','userB','2021-03-08','2021-04-30','CB5001'),
+('EL-LT-001','Light Bulb Change','userA','2021-03-08','2021-03-31','CB5001'),
+('EL-LM-005','Motor Maintenance','userA','2021-03-08','2021-03-31','FZ2DK2SBBK3'),
+('EL-LT-001','Light Bulb Change','userB','2021-03-08','2021-04-30','CB5001'),
+('EL-LT-001','Light Bulb Change','userB','2021-03-08','2021-04-30','CB5001'),
+('EL-LT-001','Light Bulb Change','userA','2021-03-08','2021-03-31','CB5001'),
+('EL-LM-005','Motor Maintenance','userA','2021-03-08','2021-03-31','FZ2DK2SBBK3'),
+('EL-LT-001','Light Bulb Change','userB','2021-03-08','2021-04-30','CB5001'),
+('EL-LT-001','Light Bulb Change','userB','2021-03-08','2021-04-30','CB5001');
+
+
+

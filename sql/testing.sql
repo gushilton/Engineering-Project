@@ -1,0 +1,1 @@
+INSERT INTO Operations.MaintenanceTasks (Job_Name,AssignedTo,routineDuty,descriptionProblem,descriptionAction,hierachy,functionID,ComponentShort,ComponentNumber,Date_Created,Date_Due) VALUES ('detector not working',22,0,'detector not activating on testing','detector replaced','GBA','000001','FireDet','000001','2022-07-06','2022-07-08')

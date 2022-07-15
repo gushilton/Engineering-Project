@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <input type="TEXT" id="user">
+        <br>
+        <input type="TEXT" id="pass">
+        <br>
+        <input type="TEXT" id="job">
+        <br>
+        <button id="btr" onclick="btrpressed()">Test</button>
+        <p id="res"></p>
+        <script>
+            var order = "ASC"
+            function btrpressed(){
+                var user = document.getElementById("user").value;
+                var pass = document.getElementById("pass").value;
+                var jobID = document.getElementById("job").value;
+
+                var conn = new XMLHttpRequest();
+                conn.onreadystatechange = function(){
+                    if (conn.readystate = 4 && conn.status == 200){
+                        var response = this.responseText;
+                        document.getElementById("res").innerHTML = response;
+                    }
+                }
+                conn.open("POST","/Task/get_TaskInfo.php",true);
+                conn.setRequestHeader("Content-type", "application/json");
+                conn.send("{\"username\":\""+user+"\",\"password\":\""+pass+"\",\"Job_ID\":\""+jobID+"\"}");
+            }
+            
+        </script>
+    </body>
+</html>
+
+

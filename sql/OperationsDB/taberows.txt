@@ -1,0 +1,22 @@
+{
+Work order number - unique reference for job made up from yearID and jobID
+job Name - name of job
+Assigned to - role of who is assigned to references crew roles
+
+routine - a bit represents whether job is routinely completed
+routineID - links to routine jobs table only if routine true
+
+problem - a short description of the problem if not routine
+action - a short description of how fixed if not routine
+
+component - linked to equipment
+
+Date created - date job created
+Date Due- date job is due for completion
+Date completed- date job was completed
+complete - a bit to represent whether job complete or not
+}
+
+{
+
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <input type="TEXT" id="user">
+        <br>
+        <input type="TEXT" id="pass">
+        <br>
+        <br>
+        <label for="ckcomple">Complete</label>
+        <input type="checkbox" id="ckcomplete">
+        <label for="ckassined">Assigned to me</label>
+        <input type="checkbox" id="ckassigned">
+        <label for="ckdate">Date</label>
+        <input type="checkbox" id="ckdate" onchange="datechange()">
+        <br>
+        <br>
+        <label for="datefrom">Date from</label>
+        <input type="date" id="datefrom">
+        <label for="dateto">Date to</label>
+        <input type="date" id="dateto">
+        <br>
+        <br>
+        <label for="sortBy"> Sort By </label>
+        <select id="sortBy">
+            <option value="Job_ID">Job ID</option>
+            <option value="Assigned_To">Assigned To</option>
+            <option value="Maintenance_ID">Maintenance ID</option>
+            <option value="Date_Set">Date Set</option>
+            <option value="Date_Due">Date Due</option>
+        </select>
+        <button id="order" onclick="orderchange()">&darr;</button>
+        <br>
+        <br>
+        <button id="btr" onclick="btrpressed()">Test</button>
+        <p id="res"></p>
+        <script>
+            var order = "ASC"
+            function btrpressed(){
+                var user = document.getElementById("user").value;
+                var pass = document.getElementById("pass").value;
+                var complete = document.getElementById("ckcomplete").checked;
+                var assigned = document.getElementById("ckassigned").checked;
+                var datefrom = document.getElementById("datefrom").value;
+                var dateto = document.getElementById("dateto").value;
+                var date = document.getElementById("ckdate").checked;
+                var sortBy = document.getElementById("sortBy").value;
+                
+                var conn = new XMLHttpRequest();
+                conn.onreadystatechange = function(){
+                    if (conn.readystate = 4 && conn.status == 200){
+                        var response = this.responseText;
+                        document.getElementById("res").innerHTML = response;
+                    }
+                }
+                conn.open("POST","/Task/get_TasksApple.php",true);
+                conn.setRequestHeader("Content-type", "application/json");
+                conn.send("{\"username\":\""+user+"\",\"password\":\""+pass+"\",\"sort\":{\"sortby\":\""+sortBy+ "\",\"orderby\":\""+order+"\"},\"filters\":{\"AssignedMe\":\""+assigned+"\",\"complete\":\""+complete+"\",\"date\":{\"filter\":\""+date+"\",\"from\":\""+datefrom+"\",\"to\":\""+dateto+"\"}}}");
+            }
+            function datechange(){
+                if (document.getElementById("ckdate").checked){
+                    document.getElementById("datefrom").required = true;
+                    document.getElementById("dateto").required = true;
+                }else{
+                    document.getElementById("datefrom").required = false;
+                    document.getElementById("dateto").required = false;
+                }
+            }
+            function orderchange(){
+                if (order == "ASC"){
+                    order = "DESC";
+                    document.getElementById("order").innerHTML = "&uarr;";
+                }else if (order == "DESC"){
+                    order = "ASC";
+                    document.getElementById("order").innerHTML = "&darr;";
+                }
+            }
+        </script>
+    </body>
+</html>
+
+
